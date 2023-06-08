@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>List of {{ Date|title }}</h1>
+<ul>
+  {% for Date in Attendance %}
+  <li><a href="{{ url_for('attendance', attendance_date=attendance.date) }}">{{ attendance.name }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}

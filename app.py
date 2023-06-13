@@ -7,15 +7,15 @@ app = Flask(__name__, template_folder='template')
 def index():
     return render_template('index.html')
 
-@app.route('/attendance/<Subject>')
-def lisub(Subject):
-    Datec = readatbysub(Subject)
-    return render_template('subjects.html',Subject=Subject, attendance=Datec)
+@app.route('/attend/<course>')
+def attend(course):
+    date = readatbycourse(course)
+    return render_template('course.html', course=course, date=date)
 
-@app.route('/attendance/<Date>')
-def ddate(Date):
-    Namec = readatbydate(Date)
-    return render_template('dates.html', Namec=Namec, attendance=Namec)
+@app.route('/attend/<date>')
+def attendees(date):
+    attendee = readatbydate(date)
+    return render_template('date.html', date=date, attendee=attendee )    
 
 if __name__ == '__main__':
     app.run(debug=True)

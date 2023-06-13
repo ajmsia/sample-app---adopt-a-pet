@@ -4,21 +4,21 @@ db_path = 'ar.db'
 
 def connect_db(path):
     conn = sqlite3.connect(path)
-    # Convert tuples to dictionaries
     conn.row_factory = sqlite3.Row
     return (conn, conn.cursor())
 
-# Read attendance by subject
-def readatbysub(Subject):
+# Read attendance by course
+def readatbycourse(course):
     conn, cur = connect_db(db_path)
-    query = 'SELECT * FROM attendance WHERE Subject=?'
-    results = cur.execute(query, (Subject,)).fetchall()
+    query = 'SELECT * FROM attendance WHERE course=?'
+    results = cur.execute(query, (course,)).fetchall()
     conn.close()
     return results
 
-def readatbydate(Date):
+# Read course by date
+def readatbydate(course, date):
     conn, cur = connect_db(db_path)
-    query = 'SELECT * FROM attendance WHERE Date=?'
-    results = cur.execute(query, (Date,)).fetchall()
+    query = 'SELECT * FROM attendance WHERE date=?'
+    results = cur.execute(query, (date,)).fetchall()
     conn.close()
     return results

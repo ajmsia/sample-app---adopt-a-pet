@@ -1,10 +1,4 @@
-{% extends 'base.html' %}
-
-{% block content %}
-<h1>List of {{ Subject|title }}</h1>
+<h1>List of {{ course }}</h1>
 <ul>
-  {% for Subject in Attendance %}
-  <li><a href="{{ url_for('attendance', attendance_id=attendance.id) }}">{{ attendance.name }}</a></li>
-  {% endfor %}
+  <li><a href="{{ url_for('attend', course=course, date=date)}}">{{ date }}</a></li>
 </ul>
-{% endblock %}
